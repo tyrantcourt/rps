@@ -4,19 +4,21 @@ function playGame() {
     // Initializes scores
     let humanScore = 0;
     let computerScore = 0;
-    // Plays a number of rounds
+    // Plays a number of rounds, logs score count at end of each
+    // [BROKEN! NEVER INCREMENTS computerScore !!]
     let i = 0;
     while (i < 5) {
         roundResult = playRound();
-        if (roundResult = "win") {
+        if (roundResult === "win") {
             humanScore++;
         }
-        else {
+        else if (roundResult === "loss") {
             computerScore++;
         }
-        i = i + 1;
+        i++;
         console.log("Computer Points: " + computerScore + "\nHuman Points: " + humanScore);
     }
+    // Declares winner
     if (computerScore === humanScore) {
         alert("Tie! Same amount of points.");
     }
@@ -81,5 +83,6 @@ function playRound(humanChoice, computerChoice) {
         console.log("You win! Scissors beats paper!")
         roundResult = "win";
     }
+    return roundResult;
 }
 
